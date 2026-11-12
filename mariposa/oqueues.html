@@ -1,0 +1,608 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OQueues - The Asterinas Book</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "navy";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-6a709194.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-45dc8b0b.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Asterinas Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="oqueues"><a class="header" href="#oqueues">OQueues</a></h1>
+<p>OQueues are the primary observation primitive in Mariposa. They provide a way to efficiently expose
+state and events to other components. This information can be observed and used as features for
+learned policies or any kind of policy inputs. OQueues can also be used for communication between
+components when a command queue or channel is needed.</p>
+<p>OQueues provide 4 operations, each of which requires the producer, consumer, or observer to
+explicitly attach (i.e., register).</p>
+<p><span id="strong_observers"></span><strong>Strong observers</strong> receive every value in the OQueue exactly
+once as they are produced. This provides a way to process the exact event stream. All strong
+observers receive all values, so strong observation has “broadcast” semantics. This is useful for
+tracking precise information, for example, maintaining a list of all in flight I/O requests. To
+allow this, strong observers are notified whenever a new value is available.</p>
+<p><span id="weak_observers"></span><strong>Weak observers</strong> can observe a history of values in the OQueue on
+a best effort basis. The length of the history must be specified when the observer registers, but is
+not guaranteed. The observer has access to the most recent elements; older elements are discarded.
+See <a href="#weak-observing-history">below for more details</a>. Weak observers are useful for accessing
+approximate recent information, for example, the most recent 5 I/O requests. Weak observers are also
+notified when new information is available, but are not guaranteed to be notified of every new value
+and the value may have been discarded before the observer runs.</p>
+<p><span id="producers"></span><strong>Producers</strong> push values into the OQueue. This is the same as a
+producer on a typical queue. Once a value is produced, it will be received by one consumer (if one
+exists) and all strong observers.</p>
+<p><span id="consumers"></span><strong>Consumers</strong> receive values from the OQueue as they are produced, with
+every message going to a single consumer. This is the same semantics as receivers on typical
+multi-consumer queues. This is similar to network “anycast”. This is used when messages are requests
+and there are multiple clients that can handle requests.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>Message access semantics</th><th>Message ownership</th><th>Use</th></tr>
+</thead>
+<tbody>
+<tr><td>Consumer</td><td>One consumer receives each message</td><td>Takes ownership of any objects in the message. Can receive non-copyable data.</td><td>Request handling</td></tr>
+<tr><td>Strong Observer</td><td>All strong observers receive each message</td><td>Can only observe copyable data from the message.</td><td>Event observation</td></tr>
+<tr><td>Weak Observer</td><td>Weak observers can view available messages</td><td>Can only observe copyable data from the message.</td><td>History or state observation</td></tr>
+</tbody>
+</table>
+</div>
+<p>All consumers and observers must <em>attach</em> before they can perform their operations. Consumers and
+observers can never see or receive values that were produced before they attached. This means that
+produce does not need to actually store values if there are no attached consumers or observers. This
+is very important for OQueues used for observation as it dramatically reduces the cost of OQueues
+which are not being observed. In fact, if there are neither strong observers nor consumers, the
+producer can immediately overwrite any data, since producers never need to wait for weak observers.
+Further, if there are no consumers not observers, produce is a no-op.</p>
+<p>OQueues have paths to identify them, for example <code>mm.tlb.miss</code>. Paths are dot-separated and may
+include optional numeric indices, for example <code>mm.tlb[0].miss</code>.</p>
+<h2 id="weak-observing-history"><a class="header" href="#weak-observing-history">Weak Observing History</a></h2>
+<p>Weak observers always have access to the most recent elements. The number of elements is the
+requested history length provided at attachment time. The basic API simply provides the most
+recent elements.</p>
+<p>In reality, weak observers can only request one value at a time, so atomically reading a history is
+not trivial because elements could be produced or dropped while the history is being read. To
+implement an read of a range, the low level weak observers request values by a global index which
+represents the number of elements that have been produced to the OQueue over its entirely life
+(including those which have been discarded). A weak observer first asks the most recent index and
+then reads a history going back from that index. This means that the values read are guaranteed to
+be consecutive regardless of concurrent production. Inspecting the index also allows weak observers
+to tell how many values they missed.</p>
+<p>For example, with a history of length 4, and 99 values already discarded the values would have the
+following indexes:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>0 (discarded)</td><td>… (discarded) …</td><td>100</td><td>101</td><td>104</td><td>103 (most recent)</td></tr>
+</tbody>
+</table>
+</div>
+<p>A weak observer would ask for the most recent index (104) and then read values 103, 102, 101, 100 to
+get its history. If a value was produced while this was happening, the index of the existing values
+would stay the same, so the reads would still get the current value if it is available.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>0 (discarded)</td><td>… (discarded) …</td><td>100 (discarded)</td><td>101</td><td>104</td><td>103 (end of weak observe window)</td><td>104</td></tr>
+</tbody>
+</table>
+</div>
+<p>If the weak observer had not yet read value 100, then it will fail to get it. This is why weak
+observers can sometimes get fewer values than the history they requested.</p>
+<h2 id="strong-observers-vs-consumers"><a class="header" href="#strong-observers-vs-consumers">Strong Observers vs Consumers</a></h2>
+<p>Strong observers and consumers are closely related, but different in an important way: Every strong
+observer receives every message, whereas only one consumer receives any given message. The flow of a
+given message is: (These operations are not actually ordered and can be concurrent.)</p>
+<ol>
+<li>The message is produced into the queue.</li>
+<li>All strong observers receive the message. Each strong observer will process the message
+separately and concurrently.</li>
+<li>One consumer receives the message. If multiple consumers are waiting to receive a message,
+which one receives the message is arbitrary.</li>
+</ol>
+<p>Strong observers are used to receive all messages on a queue without affecting other observers and
+consumers, whereas consumers are used to accept and handle messages, treating them as requests that
+need processing. For example, in a RAID1 configuration two disks may be able to handle the same
+reads, both could be consumers on the same OQueue, to provide a simple form of fault tolerance,
+while still having only one disk handle each request during normal execution. However, strong
+observers on the read request OQueue would monitor all the requests without handling them.</p>
+<p>The difference between strong observers and consumers is also useful when understanding systems
+using OQueues. A consumer is assumed to be handling the messages and acting on them, potentially
+replying to them.</p>
+<blockquote>
+<p><strong>Note:</strong> If there is only a single consumer it will in fact behave the same as a strong observer,
+since it will not compete with any other consumers for messages and will simply receive all the
+messages itself. Consumers always transfer ownership, while observers never to, however.</p>
+</blockquote>
+<h2 id="buffering-blocking-and-revocation"><a class="header" href="#buffering-blocking-and-revocation">Buffering, Blocking, and Revocation</a></h2>
+<p>OQueues only keep messages for and wait for attached strong observers or consumers. If there are no
+attached consumers, then messages can be discarded as soon as all the strong observers have seen
+them. This is important, because real OQueues obviously have limited lengths, so producers may need
+to wait if there is no space in the buffer. However, this only occurs if there are observers or
+consumers which need to see the data. So, if there is no attached consumer, the OQueue can overwrite
+data as soon as all of the strong observers have seen it.</p>
+<p>Who can block the producer?</p>
+<ul>
+<li><strong>Weak observers</strong> never block the producer, since they are not guaranteed to see every value.</li>
+<li><strong>Consumers</strong> block the producer if they do not process values fast enough.</li>
+<li><strong>Strong observers</strong> come in two flavors:
+<ul>
+<li>A strong observer attached with <code>attach_strong_observer</code> applies <strong>backpressure</strong>: if it falls
+behind, the producer blocks until it catches up.</li>
+<li>A strong observer attached with <code>attach_revocable_strong_observer</code> is <strong>automatically revoked</strong>
+(instead of blocking the producer) when it falls behind. The observer is notified of the
+revocation when it next tries to observe, and it must re-attach explicitly to continue
+observing. Revocation is per-attachment: only the lagging observer is revoked, not all
+attachments.</li>
+</ul>
+</li>
+</ul>
+<p>Which flavor is appropriate depends on the observer. Revocable attachment is used for
+userspace-facing observers, where kernel liveness must not depend on the reader keeping up.</p>
+<p>Some OQueues do not allow certain attachments at all, to entirely eliminate the risk of produce
+blocking. Attachment operations return <code>OQueueError::Unsupported</code> when the operation is not
+supported (for example, a consumer on an observation-only OQueue) or is not allowed (for example,
+a strong observer on an OQueue filled from a context which cannot block).</p>
+<p>The buffer length of an OQueue is provided at creation time. If an observer repeatedly falls behind,
+the buffer length may need to be increased.</p>
+<p><em>Future work:</em> Buffer size will be set automatically by default.</p>
+<h2 id="other-oqueue-operations"><a class="header" href="#other-oqueue-operations">Other OQueue Operations</a></h2>
+<p>OQueues provide several other operations and variants of the <a href="#producers">produce</a>,
+<a href="#consumers">consume</a>, and <a href="#strong_observers">observe</a> operations.</p>
+<p>For each main operation there are:</p>
+<ul>
+<li><code>try_*</code> operations which attempt the operation, but do not block.</li>
+<li><code>can_*</code> operations which check if the operation <em>might</em> succeed. (This operation in inherently
+racy.)</li>
+</ul>
+<p>For a full set of operations, see the Rust docs for the <code>OQueueBase</code>, <code>ConsumableOQueue</code>, and
+<code>OQueue</code> traits.</p>
+<h2 id="elements"><a class="header" href="#elements">Elements</a></h2>
+<p>An OQueue element is the message type that producers place in a queue. Any type used this way must
+implement <code>Element</code>. Deriving <code>Element</code> makes a type usable as an OQueue element; you do not need to
+write the generated implementation yourself.</p>
+<p>Lifetime-parametric elements are useful when an event should borrow values that are already
+available at the call site. For example, the arguments to an instrumented method can be recorded
+in an element that borrows <code>self</code> and other arguments, without copying them or requiring them to be
+<code>'static</code>. The borrow is used while the event is produced; a projection can read it and return the
+usual owned <code>Copy + Send</code> observation value. As a result, projection functions are mostly
+transparent to the element’s lifetime: they can work with a reference to the element as usual.</p>
+<p>Method OQueues generate lifetime-parametric elements implicitly for method arguments and results
+that carry borrows. For ad-hoc OQueues, you can declare a lifetime-parametric element yourself and
+derive <code>Element</code> on it, as in the <a href="#page-fault-example">page fault example</a>.</p>
+<h2 id="projections"><a class="header" href="#projections">Projections</a></h2>
+<p>Abstractly any value can be placed in an OQueue. However, not all values can actually be stored for
+observation. The observed value is extracted from the message by a <em>projection</em>. The result of the
+projection must be <code>Copy + Send</code> regardless of the message type. This allows the observed value to
+be efficiently observed by multiple strong and weak observers.</p>
+<p>A projection is an <code>Projection</code>, a function which extracts the observable value from a message. The
+query is run in the producing context, so it <strong>must</strong> be fast and side-effect free. There are three
+ways to construct one:</p>
+<ul>
+<li><code>Projection::new(f)</code> — <code>f</code> extracts a value from every message.</li>
+<li><code>Projection::new_filter(f)</code> — <code>f</code> returns an <code>Option</code> and may discard some values, so they
+are not observed at all.</li>
+<li><code>Projection::identity()</code> — for OQueues with a <code>Copy</code> element type, observes the whole
+message. Equivalent to <code>Projection::new(|x| *x)</code>.</li>
+</ul>
+<p><strong>Future:</strong> Today, a query is an arbitrary Rust closure. A more advanced query language — field
+chains, filtering, aggregation, and even joins — is planned. By using such a language, the system
+can perform query optimization across all the queries in the system. This would not be possible
+with arbitrary functions.</p>
+<h3 id="default-projections"><a class="header" href="#default-projections">Default Projections</a></h3>
+<p>A <em>projection</em> selects a portion of an element or computes a value from it. The <code>DefaultProjection</code>
+trait provides the default projection for a type:</p>
+<pre><code class="language-rust">pub trait DefaultProjection {
+    type Projection: Copy + Send + Serialize + 'static;
+    fn default_projection(&amp;self) -&gt; Self::Projection;
+}</code></pre>
+<p>If the value will be exported to userspace, it should also implement serde <code>Serialize</code> (the CBOR
+export uses it). The default projection is used in cases where no other projection is selected. It
+is how the OQueue filesystem exposes data in an OQueue, so all userspace accessible OQueues are
+required to have one.</p>
+<p>Some references to <a href="objects.html">Mariposa objects</a> are projected as their ID. In particular,
+<code>Arc&lt;T: OObject&gt;</code> implements <code>DefaultProjection</code> with <code>type Projected = ObjectId</code>. This widens
+the set of object types with a derivable default projection, and provides enough information to
+reconstruct a range of useful information about the object by joining information from multiple
+OQueues.</p>
+<p>Projections can use information provided by methods on the element, even if the element does not
+actually store that information. The default projections of kernel events also include the current
+time and the current task ID (an <code>EventContext</code>), which provides context information about the
+event. This information does not need to be stored in the actual OQueue element type for this to
+work, so this has no overhead on communication OQueues.</p>
+<h3 id="element-descriptors"><a class="header" href="#element-descriptors">Element descriptors</a></h3>
+<p>OQueue APIs use descriptors to identify element types independently of any particular borrow
+lifetime. A descriptor represents the element type for any lifetime, which lets one OQueue accept
+elements whose references have different lifetimes while still having one stable type identity.
+For types without lifetime parameters, <code>Element</code> uses a <code>LifetimelessElementDescriptor</code>. For a
+lifetime-parametric type, deriving <code>Element</code> also declares a descriptor named by appending
+<code>Descriptor</code> to the element type’s name. For example, <code>PageFaultMessage&lt;'a&gt;</code> uses
+<code>PageFaultMessageDescriptor</code>; any type parameters other than lifetimes are carried by the
+descriptor.</p>
+<p>When referring to an OQueue by type, use its descriptor. For example, the page fault lookup uses
+<code>PageFaultMessageDescriptor</code>:</p>
+<pre><code class="language-rust">let page_faults = registry::lookup_by_path::&lt;PageFaultMessageDescriptor&gt;(
+    &amp;path!(mm.page_fault),
+);</code></pre>
+<p>In most code the descriptor is inferred from the element type or OQueue handle, but it may appear
+in type annotations and registry lookups.</p>
+<h2 id="ad-hoc-data-collection"><a class="header" href="#ad-hoc-data-collection">Ad-hoc Data Collection</a></h2>
+<p>The simplest and most general way to make information observable is by creating an ad-hoc OQueue. In
+the real system, this is used when you need an OQueue which is not associated with a method call.
+Common cases for ad-hoc OQueues are:</p>
+<ul>
+<li>Subsystems exposing changes in their internal data structure. This is useful if the component does
+not make calls based on that change, or those calls do not effectively encode the information. For
+example, a page cache may not actually call any message when a hit occurs, but still wants to make
+it observable.</li>
+<li>Subsystems collecting information from hardware or otherwise non-observable software. For example,
+a performance counter.</li>
+</ul>
+<p>Ad-hoc data collection creates a public API, so you should not expose internal data blindly and
+instead provide an abstract interface for the data using traits to hide the implementation details
+of the component. This reduces coupling between observers and observeree and improves
+maintainability and flexibility of the system. For example, a scheduler which needs to expose
+information about the running threads should expose a value with a trait type like
+<code>dyn SchedulerState</code>, instead of exposing the concrete structure of the tables or trees used
+internally.</p>
+<h2 id="oqueues-for-object-methods"><a class="header" href="#oqueues-for-object-methods">OQueues for Object Methods</a></h2>
+<p><a href="objects.html#mariposa-objects">Mariposa objects</a> and their traits have public APIs and, as such,
+should be observable. This means that a call OQueue and a return OQueue are created for each trait
+method. There is an OQueue for each method, and the elements include the object ID. There is <em>not</em>
+an OQueue for each method on each object.</p>
+<blockquote>
+<p><strong>Note:</strong> You can view the OQueue here like a table in a relational database. Instead of having a
+separate table for each object, you have one table, and an ID column which connects each row to
+the appropriate object.</p>
+</blockquote>
+<p>The call OQueue’s element type is a struct generated from the arguments to the method (including a
+reference to <code>self</code>). The return OQueue’s element type is a struct generated from the return value
+of the method. Both implement <code>DefaultProjection</code>, so they can be observed.</p>
+<p>The OQueues are named with a dot-separated path, for example
+<code>aster_core.net.socket.ip.stream.StreamSocket.connect.call</code> and <code>[...].connect.return</code>.</p>
+<p>These OQueues can be created automatically with the <code>#[trace_methods]</code> attribute macro.
+The attribute generates the element types and emits events when an instrumented method is called
+and when it returns.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>A currently existing example is the <code>connect</code> method of the IP stream socket.
+The <code>Socket</code> trait declares the traced method and the generated element types:</p>
+<pre><code class="language-rust">#[trace_methods]
+pub trait Socket: private::SocketPrivate + Send + Sync {
+    #[trace]
+    fn connect(&amp;self, #[trace(only(call))] _socket_addr: SocketAddr) -&gt; Result&lt;()&gt;;
+}</code></pre>
+<p>The <code>StreamSocket</code> implementation reuses those types by naming their module:</p>
+<pre><code class="language-rust">#[trace_methods(types_module(crate::net::socket::socket))]
+impl Socket for StreamSocket {
+    #[trace]
+    fn connect(&amp;self, #[trace(only(call))] socket_addr: SocketAddr) -&gt; Result&lt;()&gt; {
+        // ...
+    }
+}</code></pre>
+<p>The <code>#[trace]</code> attribute selects <code>connect</code> for instrumentation. The <code>#[trace(only(call))]</code> attribute
+includes <code>socket_addr</code> in the call event but not the return event. This is needed for cases where
+the lifetime of an argument ends before the function returns, such as when a non-<code>Copy</code> value is
+passed by value to a function.</p>
+<h3 id="page-fault-example"><a class="header" href="#page-fault-example">Page fault example</a></h3>
+<p>The virtual memory subsystem publishes successful page faults to <code>mm.page_fault</code>.
+Its event type contains a reference to the VM space and the fault information:</p>
+<pre><code class="language-rust">#[derive(Element)]
+pub struct PageFaultMessage&lt;'a&gt; {
+    pub vm_space: &amp;'a Arc&lt;VmSpace&gt;,
+    pub fault_info: PageFaultInfo,
+}</code></pre>
+<p>The page fault handler publishes the event with the default queue length:</p>
+<pre><code class="language-rust">trace_structured_data!(
+    { mm.page_fault },
+    PageFaultMessage {
+        vm_space: &amp;self.vm_space,
+        fault_info: *page_fault_info,
+    },
+    PageFaultMessage
+);</code></pre>
+<p>This creates an OQueue named <code>mm.page_fault</code> and publishes a <code>PageFaultMessage</code> after the fault is
+handled successfully.</p>
+<p>You can look up and use this OQueue as shown in <a href="#page-fault-example-continued">Page fault example, continued</a>.</p>
+<h2 id="finding-oqueues"><a class="header" href="#finding-oqueues">Finding OQueues</a></h2>
+<p>Policies can find OQueues by path (e.g., <code>mm.page_fault</code>) and type (e.g., <code>PageFaultMessage</code>) in an
+OQueue registry. Once a policy has a reference to the OQueue is can attach with any projection it
+wants and access any information available.</p>
+<p>For userspace, the OQueue filesystem (<code>/oqfs</code>) exposes OQueues as files. To be exposed in OQFS, an
+OQueue needs to have a <code>DefaultProjection</code>.</p>
+<p><em>Future Work:</em> We plan to add the ability to register an OQueue with multiple projections which can
+be selected from userspace.</p>
+<p>To access the OQueue <code>mm.rss_delta.anon</code>, you can access the directory <code>/oqfs/mm/rss_delta/anon</code>.
+Depending on the exact OQueue this directory will contain files:</p>
+<ul>
+<li><code>metadata.yaml</code>: Meta-information about the OQueue such as its time and potentially, documentation
+and in-memory layout.</li>
+<li><code>produce</code>: Opening this attaches to the OQueue as a producer. Writing CBOR records with the
+correct format to it will produce that value on the OQueue.</li>
+<li><code>consume</code> and <code>strong_observe</code>: Opening this will attaches to the OQueue as a consumer, or strong
+observer, resp. Strong observers attached this way are revocable and reads return an error once
+they are revoked, the user-program needs to close and reopen the file to reset it.</li>
+</ul>
+<p><strong>Future Work:</strong> <code>weak_observer</code> and faster non-CBOR access are planned.</p>
+<h3 id="page-fault-example-continued"><a class="header" href="#page-fault-example-continued">Page fault example, continued</a></h3>
+<p>You can use this to access the page fault information in the OQueue defined in <a href="#page-fault-example">Page fault example</a>,
+above. Page It could retain a recent history containing only the VM space ID and fault address:</p>
+<pre><code class="language-rust">#[derive(Clone, Copy)]
+struct PageFaultRecord {
+    timestamp: Instant,
+    vm_space_id: u64,
+    address: Vaddr,
+}
+
+let page_faults = registry::lookup_by_path::&lt;PageFaultMessageDescriptor&gt;(
+    &amp;path!(mm.page_fault),
+)
+.expect("expected the page-fault OQueue to exist");
+
+let observer = page_faults.attach_weak_observer(
+    64,
+    Projection::new(|event: &amp;PageFaultMessage| PageFaultRecord {
+        timestamp: aster_time::read_monotonic_time().into(),
+        vm_space_id: event.vm_space.id(),
+        address: event.fault_info.address,
+    }),
+)?;
+
+let recent_faults = observer.weak_observe_recent(64)?;</code></pre>
+<p>Then, you can compute whatever statistics you want from the faults  including their timestamps.</p>
+<h2 id="inline-observers-and-consumers"><a class="header" href="#inline-observers-and-consumers">Inline Observers and Consumers</a></h2>
+<p>You can attach <a href="#strong_observers">observers</a> and <a href="#consumers">consumers</a> as functions which are
+called <em>during</em> the produce call (at the same time projections are run). This has significant
+limitations and risks, because of when the function is called. The function is limited to doing
+non-blocking operations. Notably, this prevents publishing into another OQueue.</p>
+<p><em>Future work:</em> We plan to lift the limitation on publishing within an inline observer in the future.</p>
+<p>Inline observers and consumers are useful when having a separate thread has too much overhead or
+latency. Common examples are simple summarization, like running averages. They should be considered
+a “trap-door” and only used as a last resort. This is because they have significant risks to system
+performance an even liveness.</p>
+<h2 id="implementation-and-performance"><a class="header" href="#implementation-and-performance">Implementation and Performance</a></h2>
+<p>OQueues need only expose the expected interface, so they can be implemented multiple ways, however
+the primary implementations are as follows.</p>
+<p>The current OQueue implementation is a set of ring buffers protected by a spin lock. This isn’t
+ideal for a heavily contended OQueue, but still has low overhead for most cases. This makes strong
+and weak observers very simple to implement because all state is protected by the same lock. In the
+future, some OQueues will use a lock-free ringbuffer with additional capabilities.</p>
+<p>For details see
+<a href="https://doi.org/10.1145/3766882.3767174">OQueue: Observable Communication in Learning Directed Operating Systems</a>.</p>
+<h2 id="future-work"><a class="header" href="#future-work">FUTURE WORK</a></h2>
+<p>This page describes a future state of the code in some places. The following items are
+<strong>unimplemented</strong>:</p>
+<ol>
+<li><strong>Query language.</strong> A richer query language — field chains, filtering, aggregation, and even
+joins — is planned. Today, queries are arbitrary Rust closures (<code>Projection</code>).</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../mariposa/glossary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../mariposa/objects.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../mariposa/glossary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../mariposa/objects.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mermaid-eefea253.min.js"></script>
+        <script src="../mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
